@@ -1,6 +1,6 @@
 {
     "status": "ACTIVE", 
-    "networkMode": "bridge", 
+    "networkMode": "awsvpc", 
     "family": "docker", 
     "placementConstraints": [], 
     "requiresAttributes": [
