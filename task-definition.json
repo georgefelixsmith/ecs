@@ -32,7 +32,7 @@
             "portMappings": [
               {
                 "protocol": "tcp",
-                "containerPort": 80,
+                "containerPort": 4567,
                 "hostPort": 80
               } 
             ], 
