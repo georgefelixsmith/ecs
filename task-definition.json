@@ -1,18 +1,36 @@
 {
     "status": "ACTIVE", 
+    "memory": "512", 
     "networkMode": "awsvpc", 
-    "family": "docker", 
+    "family": "taskdef", 
     "placementConstraints": [], 
     "requiresAttributes": [
+        {
+            "name": "com.amazonaws.ecs.capability.logging-driver.awslogs"
+        }, 
+        {
+            "name": "ecs.capability.execution-role-awslogs"
+        }, 
+        {
+            "name": "com.amazonaws.ecs.capability.docker-remote-api.1.19"
+        }, 
         {
             "name": "com.amazonaws.ecs.capability.docker-remote-api.1.21"
         }, 
         {
             "name": "com.amazonaws.ecs.capability.task-iam-role"
+        }, 
+        {
+            "name": "com.amazonaws.ecs.capability.docker-remote-api.1.18"
+        }, 
+        {
+            "name": "ecs.capability.task-eni"
         }
     ], 
+    "cpu": "256", 
     "executionRoleArn": "arn:aws:iam::201699324941:role/ecsTaskExecutionRole", 
     "compatibilities": [
+        "EC2", 
         "FARGATE"
     ], 
     "volumes": [], 
@@ -20,22 +38,30 @@
         "FARGATE"
     ], 
     "taskRoleArn": "arn:aws:iam::201699324941:role/ecsTaskExecutionRole", 
-    "taskDefinitionArn": "arn:aws:ecs:eu-west-1:201699324941:task-definition/docker:1", 
+    "taskDefinitionArn": "arn:aws:ecs:eu-west-1:201699324941:task-definition/taskdef:1", 
     "containerDefinitions": [
         {
             "memoryReservation": 500, 
             "environment": [], 
             "name": "docker-container", 
             "mountPoints": [], 
-            "image": "", 
+            "image": "app-repo/ea757c9172213d75a342bdfaedfb88572f49ce86", 
             "cpu": 0, 
             "portMappings": [
-              {
-                "protocol": "tcp",
-                "containerPort": 80,
-                "hostPort": 80
-              } 
+                {
+                    "protocol": "tcp", 
+                    "containerPort": 80, 
+                    "hostPort": 80
+                }
             ], 
+            "logConfiguration": {
+                "logDriver": "awslogs", 
+                "options": {
+                    "awslogs-region": "eu-west-1", 
+                    "awslogs-stream-prefix": "ecs", 
+                    "awslogs-group": "/ecs/taskdef"
+                }
+            }, 
             "essential": true, 
             "volumesFrom": []
         }
