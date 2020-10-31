@@ -27,9 +27,15 @@
             "environment": [], 
             "name": "docker-container", 
             "mountPoints": [], 
-            "image": "new/new:2", 
+            "image": "", 
             "cpu": 0, 
-            "portMappings": [], 
+            "portMappings": [
+              {
+                "protocol": "tcp",
+                "containerPort": 80,
+                "hostPort": 80
+              } 
+            ], 
             "essential": true, 
             "volumesFrom": []
         }
