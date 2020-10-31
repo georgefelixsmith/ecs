@@ -1,6 +1,7 @@
 {
     "status": "ACTIVE", 
     "memory": "512", 
+    "cpu": "25",
     "networkMode": "awsvpc", 
     "family": "taskdef", 
     "placementConstraints": [], 
